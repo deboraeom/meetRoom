@@ -1,0 +1,31 @@
+
+<div class="container">
+    <mat-toolbar>
+        <span>ATUALIZAR</span>    
+    </mat-toolbar>
+
+    
+    
+    <form class="example-form" [formGroup]="cadastroform">
+        <div class="wrapped">   
+        
+        <app-input-text titulo="Name *" controlName="name" [formGroup]="cadastroform"></app-input-text>
+        <app-input-text titulo="Data *" controlName="date" [formGroup]="cadastroform"></app-input-text>
+        <app-input-text titulo="Hora de inicio *" controlName="startHour" [formGroup]="cadastroform"></app-input-text>
+        <app-input-text titulo="Hora de termino *" controlName="endHour" [formGroup]="cadastroform"></app-input-text>
+        <app-input-text titulo="Resposavel *" controlName="responsible" [formGroup]="cadastroform"></app-input-text>
+        
+        
+    </div>
+
+    </form>
+
+    <div mat-dialog-actions>
+        <div class="horizontal">
+           
+            <span class="button"> <button mat-raised-button color="primary" (click)="cancel()">Cancelar</button></span>
+            <span class="button"> <button mat-raised-button color="accent" (click)="save()">Salve</button></span>
+    </div>
+    
+    </div>
+</div>
