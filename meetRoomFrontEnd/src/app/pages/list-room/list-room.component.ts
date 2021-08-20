@@ -35,8 +35,16 @@ roomList: room[];
   constructor(private router: Router, private service: ServiceService) { }
 
   ngOnInit(): void {
-   this.service.getRoom().subscribe((data: room[])=>{this.roomList=data})
+
+    this.carregarRoom()
+ 
   }
+  carregarRoom(){
+    this.service.getRoom().subscribe((data: room[])=>{this.roomList=data})
+  }
+
+    
+  
  atualizar(room: room): void{
    console.log("atualizou " + room.id)  
    this.router.navigate(['UpdateRoom']);
@@ -44,7 +52,8 @@ roomList: room[];
 
  }
  
- delete(room: room): void{
-  console.log("deletou " + room.id)  
+ delete(room: room): void{   
+ this.service.deleteRoom(room.id);  
+ this.carregarRoom()
 
 }}

@@ -5,10 +5,7 @@ import com.deboraeom.MeetRoom.DTO.RoomDTO;
 import com.deboraeom.MeetRoom.Exception.RoomNotFound;
 import com.deboraeom.MeetRoom.Mapper.RoomMapper;
 import com.deboraeom.MeetRoom.Repository.RoomRepository;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.stream.Collectors;
 

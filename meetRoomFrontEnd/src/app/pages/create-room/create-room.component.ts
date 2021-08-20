@@ -29,13 +29,14 @@ export class CreateRoomComponent implements OnInit {
 
   save(){  
 
- this.service.postRoom(this.cadastroform.value);
-   
-  console.log(this.cadastroform.value)
- 
-
-
-  }
+   this.service.postRoom(this.cadastroform.value);
+   this.cadastroform=this.fb.group({
+      name:'',
+      date:'',
+      startHour:'',
+      endHour:'',
+      responsible:'',  
+  })}
 
   cancel():void{
     
