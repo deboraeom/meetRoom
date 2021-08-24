@@ -1,3 +1,4 @@
+import { formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Room } from '../shared/models/room';
@@ -17,13 +18,20 @@ roomList: Room[];
   constructor(private router: Router, private service: ServiceService) { }
 
   ngOnInit(): void {
-    this.split("")
+   
 
     this.carregarRoom()
  
   }
   carregarRoom(){
-    this.service.getRooms().subscribe((data: Room[])=>{this.roomList=data
+    this.service.getRooms().subscribe((data: Room[])=>{
+      this.roomList=data
+      
+      this.roomList.map(function(Room) {
+        var splits = Room.date.split('-', 3);
+        var splits2 = splits[2].split("T",2)        
+        Room.date= splits2[0]+"-"+splits[1]+"-"+splits[0]
+    })
     ;})
 
   }
@@ -49,16 +57,17 @@ cancelar(){
 
 }
 
-split(data: String){
+formatar(data: String): string{
   data="2021-08-25T03:00:00.000Z"  
  var splits = data.split('-', 3);
  var splits2 = splits[2].split("T",2)
-
- console.log(splits);
- console.log(splits2);
-
-  data.split
-  
+  data.split  
   return splits2[0]+"-"+splits[1]+"-"+splits[0]
 
-}}
+}
+formaRoomDate(room: Room){
+
+
+}
+
+}

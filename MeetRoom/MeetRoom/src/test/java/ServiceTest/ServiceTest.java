@@ -52,16 +52,16 @@ public class ServiceTest {
     }
 
 
-   /* @Test
+    @Test
     public void whenRequestAllRoomReturnList(){
         RoomDTO roomDTOToSave = RoomBuilderDTO.builder().build().roomDTO();
         Room roomTOSave = roomMapper.toModel(roomDTOToSave);
         when(roomRepository.findAll()).thenReturn(Collections.singletonList(roomTOSave));
         assertThat(roomService.findAllRoom(),CoreMatchers.is(equalTo(Collections.singletonList(roomMapper.toDTO(roomTOSave)))));
 
-    }*/
+    }
 
-  /*  @Test
+    @Test
     public void whenRequestAllPersonReturnEmptyList(){
         RoomDTO roomDTO = RoomBuilderDTO.builder().build().roomDTO();
         Room roomTO = roomMapper.toModel(roomDTO);
@@ -70,7 +70,6 @@ public class ServiceTest {
         assertThat(roomService.findAllRoom(),CoreMatchers.is(equalTo(Collections.emptyList())));
 
     }
-*/
 
     @Test
     public void whenRequestOneRoomReturnOneRoom() throws RoomNotFound {
