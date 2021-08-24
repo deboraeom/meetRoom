@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { room } from '../shared/models/room';
+import { Router } from '@angular/router';
+import { Room } from '../shared/models/room';
 import { ServiceService } from '../shared/service/service.service';
 
 
@@ -11,9 +12,12 @@ import { ServiceService } from '../shared/service/service.service';
 })
 export class CreateRoomComponent implements OnInit {
   public cadastroform: FormGroup;
+  minDate: Date;
 
 
-  constructor(private fb: FormBuilder, private service: ServiceService) { }
+  constructor(private fb: FormBuilder, private service: ServiceService, private router: Router) {
+    this.minDate = new Date();
+   }
 
   ngOnInit(): void {
 
@@ -28,17 +32,19 @@ export class CreateRoomComponent implements OnInit {
   }
 
   save(){  
+  
+   if( this.cadastroform.invalid){
+    alert("Preencha correntamento o formulário")
+
+   }else{
 
    this.service.postRoom(this.cadastroform.value);
-   this.cadastroform=this.fb.group({
-      name:'',
-      date:'',
-      startHour:'',
-      endHour:'',
-      responsible:'',  
-  })}
+   this.cadastroform.reset();
+   alert("Salvo")}
+  }
 
   cancel():void{
+    this.router.navigate(['']);
     
   }
 

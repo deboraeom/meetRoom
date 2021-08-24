@@ -1,6 +1,6 @@
 
 
-export class room{
+export class Room{
     id?:number;
     name: string;
     date: string;

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { room } from '../shared/models/room';
+import { Room } from '../shared/models/room';
 import { ServiceService } from '../shared/service/service.service';
 
 
@@ -11,49 +11,54 @@ import { ServiceService } from '../shared/service/service.service';
   styleUrls: ['./list-room.component.css']
 })
 export class ListRoomComponent implements OnInit {
-  /*roomList: room[]=[
-    {
-      id:1,
-      name: "Mysql",
-      date: "hoje",
-      startHour:"15hrs",
-      endHour:"18hrs",
-      responsible:"Joana",
-     
-  },
-    { 
-      id:2,
-      name: "JPA",
-    date: "hoje",
-    startHour:"16hrs",
-    endHour:"19hrs",
-    responsible:"Serafim",
-}];
-   */
-roomList: room[];
+
+roomList: Room[];
 
   constructor(private router: Router, private service: ServiceService) { }
 
   ngOnInit(): void {
+    this.split("")
 
     this.carregarRoom()
  
   }
   carregarRoom(){
-    this.service.getRoom().subscribe((data: room[])=>{this.roomList=data})
+    this.service.getRooms().subscribe((data: Room[])=>{this.roomList=data
+    ;})
+
   }
 
     
   
- atualizar(room: room): void{
-   console.log("atualizou " + room.id)  
-   this.router.navigate(['UpdateRoom']);
+ atualizar(room: Room): void{
+  this.router.navigate(['UpdateRoom', room.id]);
+ 
    
 
  }
  
- delete(room: room): void{   
+ delete(room: Room): void{   
  this.service.deleteRoom(room.id);  
  this.carregarRoom()
+ this.router.navigate([''])
+
+}
+
+cancelar(){
+  this.router.navigate([''])
+
+}
+
+split(data: String){
+  data="2021-08-25T03:00:00.000Z"  
+ var splits = data.split('-', 3);
+ var splits2 = splits[2].split("T",2)
+
+ console.log(splits);
+ console.log(splits2);
+
+  data.split
+  
+  return splits2[0]+"-"+splits[1]+"-"+splits[0]
 
 }}

@@ -7,21 +7,28 @@ import { UpdateRoomComponent } from './pages/update-room/update-room.component';
 
 
 const routes: Routes = [
+  {path: '', redirectTo: 'ListRoom', pathMatch: 'full'},
+
+ 
   {
     path: 'CreateRoom',
     component: CreateRoomComponent
   },
 
-  {
-    path: 'UpdateRoom',
-    component: UpdateRoomComponent
-  },
 
   {
     path: 'ListRoom',
     component: ListRoomComponent
-  }
-
+  },
+  {
+    path: 'UpdateRoom',
+    children: [    
+      {
+        path: ':id',
+        component: UpdateRoomComponent
+      }
+    ]
+  },
 ];
 
 @NgModule({
